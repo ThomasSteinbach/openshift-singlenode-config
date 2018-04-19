@@ -4,4 +4,5 @@
   roles:
   - role: external_modules/yedit/roles/lib_yaml_editor
   - role: openshift-singlenode-config
+    master_config_file: /home/thomass/xarifOpenShift/host-config-dir/master/master-config.yaml
     node_config_file: /home/thomass/xarifOpenShift/host-config-dir/node-localhost/node-config.yaml

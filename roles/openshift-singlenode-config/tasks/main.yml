@@ -1,18 +1,22 @@
 ---
 - name: set node eviction policy
   yedit:
+    src: "{{ master_config_file }}"
+    key: kubernetesMasterConfig.servicesNodePortRange
+    value: 22-23
+
+- name: set node eviction policy
+  yedit:
     src: "{{ node_config_file }}"
     key: kubeletArguments.eviction-hard
     value:
       - memory.available<500Mi
-      - nodefs.available<1Gi
-      - nodefs.inodesFree<200Mi
-      - imagefs.available<200Mi
-      - imagefs.inodesFree<200Mi
-    append: true
-  when: "'master' in group_names"
+      - nodefs.available<500Mi
+      - nodefs.inodesFree<100Mi
+      - imagefs.available<100Mi
+      - imagefs.inodesFree<100Mi
 
-- allow iptables external access on NodePorts
+- name: allow iptables external access on NodePorts
   iptables:
     chain: FORWARD
     jump: ACCEPT

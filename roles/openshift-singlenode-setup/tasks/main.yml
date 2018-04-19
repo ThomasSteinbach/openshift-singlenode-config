@@ -1,0 +1,18 @@
+---
+- name: set node eviction policy
+  yedit:
+    src: "{{ node_config_file }}"
+    key: kubeletArguments.eviction-hard
+    value:
+      - memory.available<500Mi
+      - nodefs.available<1Gi
+      - nodefs.inodesFree<200Mi
+      - imagefs.available<200Mi
+      - imagefs.inodesFree<200Mi
+    append: true
+  when: "'master' in group_names"
+
+- allow iptables external access on NodePorts
+  iptables:
+    chain: FORWARD
+    jump: ACCEPT

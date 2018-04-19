@@ -1,0 +1,3 @@
+[submodule "external_modules/yedit"]
+	path = external_modules/yedit
+	url = git@github.com:ThomasSteinbach/yedit.git

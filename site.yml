@@ -1,0 +1,7 @@
+- hosts: localhost
+  become: true
+
+  roles:
+  - role: external_modules/yedit/roles/lib_yaml_editor
+  - role: openshift-singlenode-setup
+    node_config_file: /home/thomass/xarifOpenShift/host-config-dir/node-localhost/node-config.yaml

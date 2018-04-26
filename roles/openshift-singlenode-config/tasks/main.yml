@@ -3,7 +3,7 @@
   yedit:
     src: "{{ master_config_file }}"
     key: kubernetesMasterConfig.servicesNodePortRange
-    value: 22-23
+    value: 20-34
 
 - name: set node eviction policy (deactivated)
   yedit:

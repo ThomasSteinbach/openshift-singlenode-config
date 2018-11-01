@@ -21,3 +21,9 @@
   iptables:
     chain: FORWARD
     jump: ACCEPT
+
+- name: set router timeout
+  command: sudo oc login -u system:admin
+
+- name: set router timeout
+  command: sudo oc env dc/router ROUTER_DEFAULT_CLIENT_TIMEOUT=1h ROUTER_DEFAULT_SERVER_TIMEOUT=1h -n default
